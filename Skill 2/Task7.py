@@ -1,32 +1,23 @@
 ## Skill 2, Task 7: Float and printing
-## Description:
+## Description: Collect an integer or float and convert the value from Fahrenheit to Celsius
 ## Language: Python
 ## Author: Alexander Hepburn
 ## Date: 20.04.2024
 
-# Create a variable to store the integer
-input_value = 0
+# Create a variable to store the float
+input_value = 0.0
 
 while True:
-    # Collect the integer from the user
-    input_int = input("Please enter an integer (whole number in the range 1-365): ")
-    if input_int.isdigit() and int(input_int) > 0 and int(input_int) < 366: # Verify that the input is an integer and in the range
-        input_value = int(input_int) # Cast the input to an int and set the input_value equal to the input
-        break # Break out of the while loop to print the result
-    else:
-        print("Only ints can be entered that are in the range of 1-365, please try again.") # Print an error if the input is not correct
+    # Collect the integer/float (if it is an integer it will simply be converted to a float ie 3 -> 3.0) from the user
+    input_float = input("Please enter a temperature in fahrenheit to be converted to celsuis (float/int): ")
+    try:
+        input_value = float(input_float) # cast the value to a float and see if it raises a ValueError
+        break # Exit the while loop
+    except ValueError:
+        print("Only numbers (float or integers) can be entered, please try again.") # Print an error if the input is not correct"
 
-# Adjust the input_value to 0-365 because the week starts on a Sunday
-day_value = input_value - 1
+# Convert from Fahrenheit to Celsius
+value_in_celsius = (input_value - 32) * (5/9)
 
-## Add 4 to the value to compensate for the fact that the year starts on a Thursday
-day_value = day_value + 4
-
-# Calculate which day of the week the value would be
-day_value = day_value % 7
-
-# Create a key-value pair for the day of the week
-day_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
-
-# Output the day of the week and the integer value
-print(f"The day of the week for day {input_value} of the year is {day_to_weekday[day_value]} or week integer value of {day_value}")
+# Print the input and output rounded to 2 decimals places
+print(f"{input_value} in celsuis is {value_in_celsius:.2f} (rounded to two decimal places).")

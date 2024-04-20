@@ -4,8 +4,8 @@
 ## Author: Alexander Hepburn
 ## Date: 20.04.2024
 
-# Create a variable to store the float
-input_value = 0.0
+# Create a variable to store the float value (as a string)
+input_value = ""
 
 ## Function: is_float
 ## Description: checks if a value is a float and that there is at least one decimal

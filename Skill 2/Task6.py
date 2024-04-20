@@ -1,32 +1,36 @@
 ## Skill 2, Task 6: Intro to float
-## Description:
+## Description: Collect a float, check that it is a float and print if it is over or under 100
 ## Language: Python
 ## Author: Alexander Hepburn
 ## Date: 20.04.2024
 
-# Create a variable to store the integer
-input_value = 0
+# Create a variable to store the float
+input_value = 0.0
+
+## Function: is_float
+## Description: checks if a value is a float and that there is at least one decimal
+def is_float(num):
+    try:
+        float(num) ## cast the value to a float and see if it raises a ValueError
+        if "." in str(num) and len(num.split(".")[1]) > 0: # check if there is a decimal point and that there is at least one value behind the decimal
+            return True # return that the value is a float
+        else:
+            return False # return that the value is not a float
+    except ValueError:
+        return False # return that the value is not a float
+
 
 while True:
-    # Collect the integer from the user
-    input_int = input("Please enter an integer (whole number in the range 1-365): ")
-    if input_int.isdigit() and int(input_int) > 0 and int(input_int) < 366: # Verify that the input is an integer and in the range
-        input_value = int(input_int) # Cast the input to an int and set the input_value equal to the input
+    # Collect the float from the user
+    input_float = input("Please enter a float (decimal number with at least one decimal): ")
+    if is_float(input_float): # Verify that the input is a float with our helper method
+        input_value = float(input_float) # Set the input_value equal to the input
         break # Break out of the while loop to print the result
     else:
-        print("Only ints can be entered that are in the range of 1-365, please try again.") # Print an error if the input is not correct
+        print("Only floats with at least one decimal can be entered, please try again (example 3.0).") # Print an error if the input is not correct
 
-# Adjust the input_value to 0-365 because the week starts on a Sunday
-day_value = input_value - 1
-
-## Add 4 to the value to compensate for the fact that the year starts on a Thursday
-day_value = day_value + 4
-
-# Calculate which day of the week the value would be
-day_value = day_value % 7
-
-# Create a key-value pair for the day of the week
-day_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
-
-# Output the day of the week and the integer value
-print(f"The day of the week for day {input_value} of the year is {day_to_weekday[day_value]} or week integer value of {day_value}")
+# Check if the float is under or over 100
+if input_value < 100:
+    print(f"Your number ({input_value}) is smaller than 100.") # Print that it is under
+else:
+    print(f"Your number ({input_value}) is higher than 100.") # Print that it is over

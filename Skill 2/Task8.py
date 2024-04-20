@@ -1,32 +1,37 @@
 ## Skill 2, Task 8: Float, int and string
-## Description:
+## Description: Check if 3 different values are equal to "hello", 10.0 and 20
 ## Language: Python
 ## Author: Alexander Hepburn
 ## Date: 20.04.2024
 
-# Create a variable to store the integer
-input_value = 0
+# Create the variables
+mystring = "hallo"
+myfloat = 21.0
+myint = 21
 
-while True:
-    # Collect the integer from the user
-    input_int = input("Please enter an integer (whole number in the range 1-365): ")
-    if input_int.isdigit() and int(input_int) > 0 and int(input_int) < 366: # Verify that the input is an integer and in the range
-        input_value = int(input_int) # Cast the input to an int and set the input_value equal to the input
-        break # Break out of the while loop to print the result
-    else:
-        print("Only ints can be entered that are in the range of 1-365, please try again.") # Print an error if the input is not correct
+# Check if the variables are of the correct type
+try:
+    str(mystring)
+    float(myfloat)
+    int(myint)
+except ValueError:
+    # If not print an error message
+    raise TypeError(f"One of the values is not of correct type. mystring should be a string (it is a {type(mystring)}), myfloat should be a float (it is a {type(myfloat)}) and myint should be an int (it is a {type(myint)}).")
 
-# Adjust the input_value to 0-365 because the week starts on a Sunday
-day_value = input_value - 1
+# Check if mystring is a string equal to "hello"
+if mystring == "hello":
+    print(f"The variable mystring is equal to the value hello") # Print that it is equal
+else:
+    print(f"The variable mystring is not equal to the value hello (its value is {mystring}") # Print that it is not equal
 
-## Add 4 to the value to compensate for the fact that the year starts on a Thursday
-day_value = day_value + 4
+# Check if myfloat is a float equal to 10.0
+if myfloat == 10.0:
+    print(f"The variable myfloat is equal to the value 10.0") # Print that it is equal
+else:
+    print(f"The variable myfloat is not equal to the value 10.0 (its value is {mystring}") # Print that it is not equal
 
-# Calculate which day of the week the value would be
-day_value = day_value % 7
-
-# Create a key-value pair for the day of the week
-day_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
-
-# Output the day of the week and the integer value
-print(f"The day of the week for day {input_value} of the year is {day_to_weekday[day_value]} or week integer value of {day_value}")
+# Check if myint is an int equal to 20
+if myint == 20:
+    print(f"The variable myint is equal to the value 20") # Print that it is equal
+else:
+    print(f"The variable myint is not equal to the value 20 (its value is {mystring}") # Print that it is not equal

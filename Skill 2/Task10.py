@@ -1,32 +1,36 @@
 ## Skill 2, Task 10: Reverse strings
-## Description:
+## Description: Collect first and last name and print last then first name
 ## Language: Python
 ## Author: Alexander Hepburn
 ## Date: 20.04.2024
 
-# Create a variable to store the integer
-input_value = 0
-
-while True:
-    # Collect the integer from the user
-    input_int = input("Please enter an integer (whole number in the range 1-365): ")
-    if input_int.isdigit() and int(input_int) > 0 and int(input_int) < 366: # Verify that the input is an integer and in the range
-        input_value = int(input_int) # Cast the input to an int and set the input_value equal to the input
-        break # Break out of the while loop to print the result
+## Function: is_a_name
+## Description: checks if a value is a name but checking if it contains any numbers or special charactes
+## Input: input_string: String
+## Returns: True or False
+def is_a_name(input_string):
+    # Check to see if the string is printable and doesnt contain any numbers or special characters
+    if input_string.isprintable() and not any(char.isdigit() for char in input_string) and not any(not c.isalnum() for c in input_string):
+        return True # Return that the string is a name
     else:
-        print("Only ints can be entered that are in the range of 1-365, please try again.") # Print an error if the input is not correct
+        return False # Return that the string is not a name
 
-# Adjust the input_value to 0-365 because the week starts on a Sunday
-day_value = input_value - 1
+# List of names to be collected
+names = []
 
-## Add 4 to the value to compensate for the fact that the year starts on a Thursday
-day_value = day_value + 4
+# key-value pair to associate which value is the first and which is the last name
+value_dictionary = {0: "first", 1: "last"}
 
-# Calculate which day of the week the value would be
-day_value = day_value % 7
+# For loop to collect two names from the user
+for i in range(2):
+    while True:
+        # Collect an integer from the user
+        input_name = input(f"Please enter your {value_dictionary[i]} name: ")
+        if is_a_name(input_name): # Check if the input is a name with the help of our helper method
+            names.append(input_name) # If the input is a string append it to the names list
+            break # Break out of the while loop to collect the next input
+        else:
+            print("Only names can be entered (no numbers or characters), please try again.") # Print an error if the input is not a name
 
-# Create a key-value pair for the day of the week
-day_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
-
-# Output the day of the week and the integer value
-print(f"The day of the week for day {input_value} of the year is {day_to_weekday[day_value]} or week integer value of {day_value}")
+# Print the last then first name to the console
+print(f"Hello {names[-1]} {names[0]}!")
