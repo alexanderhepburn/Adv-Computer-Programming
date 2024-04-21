@@ -2,7 +2,7 @@
 ## Description:
 ## Language: Python
 ## Author: Alexander Hepburn
-## Date: 20.04.2024
+## Date: 21.04.2024
 
 ## Function: sumofthree
 ## Description: returns the sum of three inputs

@@ -2,31 +2,29 @@
 ## Description:
 ## Language: Python
 ## Author: Alexander Hepburn
-## Date: 20.04.2024
+## Date: 21.04.2024
 
-# Create a variable to store the integer
-input_value = 0
+#In this exercise, you will need to add numbers and strings to the correct lists using the "append" list method.
 
-while True:
-    # Collect the integer from the user
-    input_int = input("Please enter an integer (whole number in the range 1-365): ")
-    if input_int.isdigit() and int(input_int) > 0 and int(input_int) < 366: # Verify that the input is an integer and in the range
-        input_value = int(input_int) # Cast the input to an int and set the input_value equal to the input
-        break # Break out of the while loop to print the result
-    else:
-        print("Only ints can be entered that are in the range of 1-365, please try again.") # Print an error if the input is not correct
+# Create 3 lists: numbers, strings and names
 
-# Adjust the input_value to 0-365 because the week starts on a Sunday
-day_value = input_value - 1
+numbers = []
+strings = []
+names = []
 
-## Add 4 to the value to compensate for the fact that the year starts on a Thursday
-day_value = day_value + 4
+# Add the numbers 1,2, and 3 to the "numbers" list, and the words 'hello' and 'world' to the strings variable
 
-# Calculate which day of the week the value would be
-day_value = day_value % 7
+numbers.extend([1, 2, 3])
+strings.extend(["hello", "world"])
 
-# Create a key-value pair for the day of the week
-day_to_weekday = {0: "Sunday", 1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday"}
+# Add names John, Eric and Jessica to strings list
 
-# Output the day of the week and the integer value
-print(f"The day of the week for day {input_value} of the year is {day_to_weekday[day_value]} or week integer value of {day_value}")
+names.extend(["John", "Eric", "Jessica"])
+
+#Create a new variable third_name with the third name taken from names list, using the brackets operator []. Note that the index is zero-based, so if you want to access the second item in the list, its index will be 1.
+
+third_name = names[2]
+
+# At the end print all lists and one variable created.
+
+print(f"Here are all the variables \n numbers: {numbers} \n strings: {strings} \n names: {names} \n third_name: {third_name}")

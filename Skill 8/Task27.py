@@ -2,31 +2,34 @@
 ## Description:
 ## Language: Python
 ## Author: Alexander Hepburn
-## Date: 20.04.2024
+## Date: 21.04.2024
 
-# List of integers to be collected
-numbers = []
+# Class to be used later for a function not being used correctly
+class FunctionUsageError(Exception):
+    """Exception raised for incorrect usage of a function."""
+    def __init__(self, message):
+        self.message = message
+        super().__init__(self.message)
 
-# For loop to collect two integers from the user
-for i in range(2):
-    while True:
-        # Collect an integer from the user
-        input_number = input("Please enter a number (non-zero whole number): ")
-        try:
-            if not int(input_number) == 0: # Check that the inputed value is not a zero
-                numbers.append(int(input_number)) # If the input is an integer append it to the numbers list
-                break # Break out of the while loop to collect the next input
-            else:
-                print("Only non-zero integers can be entered, please try again.") # Print an error if the input is a zero
-        except ValueError:
-            print("Only ints can be entered, please try again.") # Print an error if the input is not an integer
+## Function: highest_of_three
+## Description: returns the highest int of three int
+## Input: three ints
+## Returns: Int
+def highest_of_three(*args):
+    try:
+        if not len(args) == 3: # Make sure that there are exactly 3 arguments otherwise raise FunctionUsageError
+            raise FunctionUsageError
+        # Create a list of ints and check that they are all ints
+        list_of_ints = map(lambda x: int(x), args)
 
+        # Return the highest int
+        return max(list_of_ints)
+    except FunctionUsageError:
+        print(f"FunctionUsageError (highest_of_three): Incorrect use of the function, exactly three arguments must be inputted ({len(args)} were inputted).")
+        return 0
+    except ValueError:
+        print(f"ValueError (highest_of_three): Only ints can be inputted.")
+        return 0
 
-# Create a variable with how many inputs are positive (first a lambda function is performed on the list to return a list of True and False and then the Trues are counted and returned as an int).
-positive_number = list(map(lambda x: x > 0, numbers)).count(True)
-
-# Check how many positives, if only one that print YES and otherwise NO as per assignment instructions
-if positive_number == 1:
-    print("YES")
-else:
-    print("NO")
+# Print the output
+print(f"The result of the function: highest_of_three(5,3,10) is: {highest_of_three(5,3,10)}")
