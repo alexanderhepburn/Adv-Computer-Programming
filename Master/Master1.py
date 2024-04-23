@@ -1,5 +1,5 @@
 ## Master 1: Install Matplotlib, NumPy and Pandas
-## Description:
+## Description: Simple exercise to confirm that the title packages were installed
 ## Language: Python
 ## Author: Alexander Hepburn
 ## Date: 22.04.2024
@@ -25,6 +25,7 @@ print (numpy.__version__)
 # TASK: Send the output so make sure that all is installed correctly
 
 # Console-Ouput:
+# Run using pycharm Version: 2023.2.5 (Professional Edition) on a Macbook Pro (M1) with python version 3.11
 # (base) alexanderhepburn@eduroamstud-10-255-139-168 Master % python3 Master1.py
 # 3.7.1
 # 2.0.1
