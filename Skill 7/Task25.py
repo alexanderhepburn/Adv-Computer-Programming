@@ -1,4 +1,4 @@
-## Skill 7, Task 24: Debug broken program
+## Skill 7, Task 25: Debug broken program
 ## Description: Correct the program with a for loop
 ## Language: Python
 ## Author: Alexander Hepburn
